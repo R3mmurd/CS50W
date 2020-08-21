@@ -1,0 +1,139 @@
+html, body {
+    height: 100%;
+}
+
+.link-container {
+    margin-top: 10px;
+    width: 220px;
+    margin-left: auto;
+}
+
+.link-container a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: black;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.flex-container {
+    height: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.form-container {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+}
+
+.form-control {
+    width: 500px;
+    margin: auto;
+}
+
+.form-button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn-default {
+    color: #5F6368;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+}
+
+@media (min-width: 900px) {
+    body {
+        width: 100%;
+    }
+}
+
+@media (max-width: 899px) {
+    body {
+        width: 900px;
+    }
+}
+
+#google-input {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     border: 1px solid #2d9fd9;
+     width: 500px;
+     padding-left: 10px;
+}
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+nav .navbar-brand span {
+    font-weight: bolder;
+}
+
+.title-container {
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: red;
+    font-size: 14pt;
+}
+
+.advanced-container {
+    padding-left: 50px;
+    font-size: 10pt;
+}
+
+.advanced-container .form-control {
+    width: 100%;
+    height: 30px;
+}
+
+.advanced-container .hint {
+    color: #5F6368;
+}
+
+.code {
+    font-family: monospace;
+}
+
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.advanced-container .button {
+    margin-left: auto;
+    width: 150px;
+    margin-top: 30px;
+}

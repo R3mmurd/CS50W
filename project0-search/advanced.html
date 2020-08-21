@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <title>Search</title>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">
+                <span class="blue">S</span><span class="red">e</span><span class="yellow">a</span><span class="blue">r</span><span class="green">c</span><span class="red">h</span>
+            </a>
+        </nav>
+
+        <div>
+            <div class="title-container">
+                Advanced Search
+            </div>
+        </div>
+
+        <hr>
+        
+        <!-- Body container -->
+        <div class="advanced-container">
+            <form action="https://google.com/search">
+                <div class="row">
+                    <div class="col-1">all these words:</div>
+                    <div class="col-4"><input class="form-control" type="text" name="as_q"></div>
+                    <div class="col-7 hint">Type the important words: <span class="code">tri-colour rat terrier</span></div>  
+                </div>
+                <div class="row">
+                    <div class="col-1">this exact word or phrase:</div>
+                    <div class="col-4"><input class="form-control" type="text" name="as_epq"></div>
+                    <div class="col-7 hint">Put exact words in quotes: <span class="code">"rat terrier"</span></div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-1">any of these words:</div>
+                    <div class="col-4"><input class="form-control" type="text" name="as_oq"></div>
+                    <div class="col-7 hint">Type OR between all the words you want: <span class="code">miniature OR standar</span></div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-1">none of these words:</div>
+                    <div class="col-4"><input class="form-control" type="text" name="as_eq"></div>
+                    <div class="col-7 hint">Put a minus sign just before words that you don't want: <span class="code">-rodent, -"Jack Russell"</span></div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-4">
+                        <div class="button"><button class="btn btn-primary" type="submit">Advanced Search</button></div>
+                    </div>
+                    <div class="col-8"></div>                    
+                </div>                
+            </form>
+        </div>  
+    </body>
+</html>
