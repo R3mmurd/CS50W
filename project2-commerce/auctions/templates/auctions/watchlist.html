@@ -1,0 +1,32 @@
+    {% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Watchlist</h2>
+
+    {% if watchlist %}
+        {% for listing in watchlist %}
+            <div class="card">
+                <div class="row no-gutters">
+                    <div style="width: 250px;">
+                        {% if listing.image_url %}
+                            <img width="250" height="250"  class="card-img" src="{{ listing.image_url }}" alt="{{ listing.title }} image">
+                        {% else %}
+                            <img width="250" height="250" class="card-img" src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png" alt="Image not available">
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ listing.title }}</h5>
+                            <p class="card-text"><strong>Price: </strong>${{ listing.current_amount }}</p>
+                            <p class="card-text">{{ listing.description }}</p>
+                            <p class="card-text"><small class="text-muted">Created: {{ listing.created }}</small></p>
+                            <a href="{% url 'view_listing' listing.id %}" class="btn btn-primary stretched-link">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>There are no elements in your watchlist.</p>
+    {% endif %}
+{% endblock %}

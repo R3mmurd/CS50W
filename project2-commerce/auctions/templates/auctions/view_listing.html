@@ -1,0 +1,112 @@
+    {% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Listing: {{ listing.title }} {% if not listing.active %}<span class="closed">(CLOSED)</span>{% endif %}</h2>
+
+    {% if listing.active and user.is_authenticated %}
+        {% if in_watchlist %}
+            <a class="btn btn-danger btn-tiny" href="{% url 'toggle_watchlist' pk=listing.id %}">Unwatch</a>
+        {% else %}
+            <a class="btn btn-secondary btn-tiny" href="{% url 'toggle_watchlist' pk=listing.id %}">Watchlist</a>
+        {% endif %}
+    {% endif %}
+
+    <br>
+
+    {% if listing.image_url %}
+        <img class="listing-img" src="{{ listing.image_url }}" alt="{{ listing.title }} image">
+    {% endif %}
+
+    <br>
+    <p>{{ listing.description }}</p>
+
+    <h2>${{ listing.current_amount }}</h2>
+
+    <p>
+        <small>
+            {{ bids|length }} bid(s) {% if listing.active %} so far {% endif %}.
+
+            {% if user.is_authenticated and bids|length > 0 and bids.first.author == user %}
+                {% if listing.active %}
+                    Your bid is the current bid.
+                {% else %}
+                    You won this auction.
+                {% endif %}
+            {% endif %}
+        </small>
+    </p>
+
+    {% if listing.active and user.is_authenticated %}
+        <form action="{% url 'add_bid' pk=listing.id %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" type="number" step="0.01" name="bid" required>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Place Bid">
+        </form>
+    {% endif %}
+
+    <br>
+
+    <h3>Details</h3>
+    <ul>
+        <li>Listed by: {{ listing.listed_by.username }}</li>
+        <li>Category: {% if listing.category %} {{ listing.category.name }} {% else %} No Category Listed {% endif %}</li>
+    </ul>
+
+    {% if listing.active and user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="widget-area no-padding blank">
+                    <div class="status-upload">
+                        <form action="{% url 'add_message' pk=listing.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <textarea required name="text" class="form-control" placeholder="Leave your comment here." ></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-share"></i> Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <br>
+
+    {% if comments %}
+        <h3>Comments</h3>
+
+        {% for comment in comments %}
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="media g-mb-30 media-comment">
+                        <div style="width: 80px;">
+                            <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://ui-avatars.com/api/?name={{ comment.author.username }}&background=0D8ABC&color=fff" alt="Image Description">
+                        </div>
+                        <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                          <div class="g-mb-15">
+                            <h5 class="h5 g-color-gray-dark-v1 mb-0">{{ comment.author.username }}</h5>
+                            <small class="g-color-gray-dark-v4 g-font-size-12 text-muted">{{ comment.created }}</small>
+                          </div>
+
+                          <p>{{ comment.text }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>No comments yet.</h3>
+    {% endif %}
+
+    {% if listing.active and user.is_authenticated and user == listing.listed_by %}
+        <form action="{% url 'close_listing' pk=listing.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-danger" value="Close Listing">
+        </form>
+    {% endif %}
+
+{% endblock %}
