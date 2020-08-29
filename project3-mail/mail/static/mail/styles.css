@@ -1,0 +1,26 @@
+textarea {
+    min-height: 400px;
+}
+
+.email-row-unread {
+    background-color: white;
+}
+
+.email-row-read {
+    background-color: lightgray;
+}
+
+.col-from {
+    width: 30%;
+    text-align: left;
+}
+
+.col-subject {
+    width: 45%;
+    text-align: left;
+}
+
+.col-timestamp {
+    width: 25%;
+    text-align: right;
+}
